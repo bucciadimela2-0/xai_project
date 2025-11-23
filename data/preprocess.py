@@ -2,7 +2,7 @@ import argparse
 import os
 from typing import Optional, Tuple
 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 
 FREQ_REQUIRED = 4_000_000.0
@@ -36,9 +36,9 @@ def clean_data(df: pd.DataFrame, drop_cols: Optional[list] = DROP_COLS, keep_flu
     
     cleaned = df.drop(columns=drop_cols, errors="ignore")
     if not keep_flux and FLUX_COL in cleaned.columns:
-        cleaned = cleaned.drop(column = [FLUX_COL])
+        cleaned = cleaned.drop(columns = [FLUX_COL])
     return cleaned
-
+#Divide i file in train, val e test
 def split_data(
     df: pd.DataFrame,
     train_ratio: float = 0.7,
@@ -67,7 +67,7 @@ def split_data(
 
 
 
-
+#Pipeline pre-processo
 def preprocess(
     input_path: str,
     output_dir: str = "data/data_cleaned",
@@ -76,7 +76,7 @@ def preprocess(
     val_ratio: float = 0.15,
     shuffle: str = "none",
     random_state: int = 42,
-    #cv_folds: Optional[int] = None,
+    
 ) -> None:
     print(f"[INFO] Caricamento: {input_path}")
     df = pd.read_csv(input_path, sep=";")

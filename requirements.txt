@@ -1,1 +1,13 @@
-pysr
+# Core
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualizzazione (opzionale)
+matplotlib>=3.7.0
+seaborn>=0.13.0
+
+# Symbolic Regression
+pysr>=0.14.0
+
+# Clustering o ML classico
+scikit-learn>=1.4.0
