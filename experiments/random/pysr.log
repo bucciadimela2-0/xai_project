@@ -1,0 +1,30 @@
+2025-11-29 12:57:19,864 [INFO] Logger initialized. Log file: experiments/random/pysr.log
+2025-11-29 12:57:19,864 [INFO] === Starting PySR symbolic regression run ===
+2025-11-29 12:57:19,864 [INFO] Loading dataset from: data/random/50k.csv
+2025-11-29 12:57:45,324 [INFO] Logger initialized. Log file: experiments/random/pysr.log
+2025-11-29 12:57:45,326 [INFO] === Starting PySR symbolic regression run ===
+2025-11-29 12:57:45,326 [INFO] Loading dataset from: data/random/data_50k.csv
+2025-11-29 12:57:45,564 [INFO] Dataset shape: 50000 rows, 18 columns
+2025-11-29 12:57:45,584 [INFO] Using 17 numeric features for symbolic regression.
+2025-11-29 12:57:45,584 [INFO] No val_csv or test_csv provided. Performing internal split with val_ratio=0.15, test_ratio=0.15.
+2025-11-29 12:57:45,597 [INFO] Internal split sizes -> TRAIN: 35000, VAL: 7500, TEST: 7500
+2025-11-29 12:57:45,597 [INFO] Final TRAIN size: 35000  |  VAL size: 7500
+2025-11-29 12:57:45,597 [INFO] Starting PySR training...
+2025-11-29 12:57:46,097 [INFO] Compiling Julia backend...
+2025-11-30 02:04:11,386 [INFO] PySR training completed.
+2025-11-30 02:04:11,427 [INFO] [TRAIN] MSE=28.967186 | R^2=0.313014
+2025-11-30 02:04:11,437 [INFO] [VAL] MSE=28.392746 | R^2=0.317476
+2025-11-30 02:04:11,446 [INFO] [TEST] MSE=27.620331 | R^2=0.343231
+2025-11-30 02:04:11,733 [INFO] Test predictions saved to: experiments/random/pysr_test_predictions.csv
+2025-11-30 02:04:11,762 [INFO] PySR equations saved to: experiments/random/pysr_equations.csv
+2025-11-30 02:04:11,763 [INFO] PySR metrics saved to: experiments/random/pysr_metrics.json
+2025-11-30 02:04:11,765 [INFO] Best equation found by PySR:
+2025-11-30 02:04:11,767 [INFO] 
+complexity                                                5
+loss                                              28.967184
+equation                      14.48025 - (x12 * 0.21836658)
+score                                              0.234871
+sympy_format                      14.48025 - 0.21836658*x12
+lambda_format    PySRFunction(X=>14.48025 - 0.21836658*x12)
+Name: 3, dtype: object
+2025-11-30 02:04:11,769 [INFO] === PySR symbolic regression run completed ===

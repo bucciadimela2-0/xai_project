@@ -1,0 +1,16 @@
+2025-11-30 09:05:32,247 [INFO] Logger initialized. Log file: experiments/random10/pysr.log
+2025-11-30 09:05:32,248 [INFO] === Starting PySR symbolic regression run ===
+2025-11-30 09:05:32,248 [INFO] Loading dataset from: data/random10/split_random/train.csv
+2025-11-30 09:05:32,284 [INFO] Dataset shape: 7000 rows, 18 columns
+2025-11-30 09:05:32,289 [INFO] Using 17 numeric features for symbolic regression.
+2025-11-30 09:05:32,289 [INFO] Using separate validation CSV: data/random10/split_random/val.csv
+2025-11-30 09:05:32,290 [INFO] Loading dataset from: data/random10/split_random/val.csv
+2025-11-30 09:05:32,298 [INFO] Dataset shape: 1500 rows, 18 columns
+2025-11-30 09:05:32,299 [INFO] Using 17 numeric features for symbolic regression.
+2025-11-30 09:05:32,300 [INFO] Using separate TEST CSV: data/random10/split_random/test.csv
+2025-11-30 09:05:32,300 [INFO] Loading dataset from: data/random10/split_random/test.csv
+2025-11-30 09:05:32,309 [INFO] Dataset shape: 1500 rows, 18 columns
+2025-11-30 09:05:32,310 [INFO] Using 17 numeric features for symbolic regression.
+2025-11-30 09:05:32,310 [INFO] Final TRAIN size: 7000  |  VAL size: 1500
+2025-11-30 09:05:32,310 [INFO] Starting PySR training...
+2025-11-30 09:05:32,810 [INFO] Compiling Julia backend...
