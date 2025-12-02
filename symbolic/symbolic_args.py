@@ -1,4 +1,4 @@
-
+# symbolic/args/symbolic_args.py
 
 import argparse
 
@@ -9,6 +9,11 @@ def parse_args():
     """Parse CLI arguments for the symbolic regression script."""
     parser = argparse.ArgumentParser(
         description="Run symbolic regression with PySR on a dataset subset."
+    )
+
+    parser.add_argument(
+        "--config",
+        help="Optional YAML config file for PySR hyperparameters.",
     )
 
     parser.add_argument(
@@ -32,7 +37,7 @@ def parse_args():
     parser.add_argument(
         "--target_col",
         default=TARGET_COL_DEFAULT,
-        help=f"Name of target column (default: {TARGET_COL_DEFAULT}).",
+        help=f"Target column name (default: {TARGET_COL_DEFAULT}).",
     )
     parser.add_argument(
         "--val_ratio",

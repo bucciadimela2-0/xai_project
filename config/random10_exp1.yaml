@@ -1,0 +1,19 @@
+experiment:
+  name: "random10_exp1"
+  description: "Random 10k, baseline PySR config"
+  seed: 42
+
+pysr:
+  niterations: 80
+  populations: 10
+  population_size: 1000
+  elementwise_loss: "L2DistLoss()"
+  binary_operators: ["+", "-", "*", "/"]
+  unary_operators: ["sin", "cos", "log", "exp"]
+  maxsize: 20
+  maxdepth: 6
+  model_selection: "best"
+  progress: true
+  verbosity: 1
+  deterministic: true
+  parallelism: "serial"

@@ -11,35 +11,38 @@ RED="\033[1;31m"
 RESET="\033[0m"
 
 ###########################################
-# CONFIG
+# EXPERIMENT CONFIG
 ###########################################
+
+CONFIG_YAML="configs/experiments/random10_exp1.yaml"
 
 TRAIN_CSV="data/random10/split_random/train.csv"
 VAL_CSV="data/random10/split_random/val.csv"
 TEST_CSV="data/random10/split_random/test.csv"
 
-OUTPUT_DIR="experiments/random10"
-
+OUTPUT_DIR="experiments/random10/exp1"
 TARGET_COL="FM_data_peak_distorted_echo_power"
 SEED=42
 
 ###########################################
-# START
+# CHECKS
 ###########################################
 
-echo -e "${BLUE}=== Starting PySR symbolic regression ===${RESET}"
+echo -e "${BLUE}=== Starting PySR experiment: $CONFIG_YAML ===${RESET}"
+
 mkdir -p "$OUTPUT_DIR"
 
-# Validate input CSVs
 [[ ! -f "$TRAIN_CSV" ]] && echo -e "${RED}[ERROR] TRAIN missing: $TRAIN_CSV${RESET}" && exit 1
 [[ ! -f "$VAL_CSV" ]] && echo -e "${RED}[ERROR] VAL missing: $VAL_CSV${RESET}" && exit 1
 [[ ! -f "$TEST_CSV" ]] && echo -e "${RED}[ERROR] TEST missing: $TEST_CSV${RESET}" && exit 1
+[[ ! -f "$CONFIG_YAML" ]] && echo -e "${RED}[ERROR] YAML missing: $CONFIG_YAML${RESET}" && exit 1
 
 ###########################################
-# BUILD COMMAND
+# COMMAND
 ###########################################
 
 CMD="python symbolic/symbolic.py \
+  --config $CONFIG_YAML \
   --train_csv $TRAIN_CSV \
   --val_csv $VAL_CSV \
   --test_csv $TEST_CSV \
@@ -52,11 +55,7 @@ echo -e "${YELLOW}Executing:${RESET}"
 echo -e "${GREEN}$CMD${RESET}"
 echo ""
 
-###########################################
-# RUN
-###########################################
-
 eval $CMD
 
-echo -e "${BLUE}=== PySR symbolic regression completed ===${RESET}"
-echo -e "${GREEN}Results saved to: $OUTPUT_DIR${RESET}"
+echo -e "${BLUE}=== Experiment completed ===${RESET}"
+echo -e "${GREEN}Results saved in: $OUTPUT_DIR${RESET}"
