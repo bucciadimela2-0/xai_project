@@ -14,3 +14,20 @@
 2025-11-30 09:05:32,310 [INFO] Final TRAIN size: 7000  |  VAL size: 1500
 2025-11-30 09:05:32,310 [INFO] Starting PySR training...
 2025-11-30 09:05:32,810 [INFO] Compiling Julia backend...
+2025-11-30 10:52:47,948 [INFO] PySR training completed.
+2025-11-30 10:52:47,964 [INFO] [TRAIN] MSE=28.756104 | R^2=0.311993
+2025-11-30 10:52:47,972 [INFO] [VAL] MSE=26.120023 | R^2=0.329184
+2025-11-30 10:52:47,980 [INFO] [TEST] MSE=28.621829 | R^2=0.310183
+2025-11-30 10:52:48,042 [INFO] Test predictions saved to: experiments/random10/pysr_test_predictions.csv
+2025-11-30 10:52:48,077 [INFO] PySR equations saved to: experiments/random10/pysr_equations.csv
+2025-11-30 10:52:48,078 [INFO] PySR metrics saved to: experiments/random10/pysr_metrics.json
+2025-11-30 10:52:48,080 [INFO] Best equation found by PySR:
+2025-11-30 10:52:48,082 [INFO] 
+complexity                                                5
+loss                                                28.7561
+equation                      14.50047 - (x12 * 0.21621367)
+score                                              0.118914
+sympy_format                      14.50047 - 0.21621367*x12
+lambda_format    PySRFunction(X=>14.50047 - 0.21621367*x12)
+Name: 2, dtype: object
+2025-11-30 10:52:48,083 [INFO] === PySR symbolic regression run completed ===

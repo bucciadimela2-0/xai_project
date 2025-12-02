@@ -10,36 +10,15 @@ from const import (DEFAULT_CLUSTER_OUTPUT_DIR, DEFAULT_GEO_OUTPUT_DIR,
                    DEFAULT_VAL_SPLIT, DROP_COLS, FLUX_COL, FREQ_COL,
                    FREQ_REQUIRED, TARGET_COL)
 
-# --------------------- BASIC CLEANING ---------------------
-
 
 def filter_data(
     df: pd.DataFrame,
     freq: float = FREQ_REQUIRED,
     cancel_column: bool = True
 ) -> pd.DataFrame:
-    """
-    Filter rows where the frequency column matches a given value.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Input dataset.
-    freq : float, default=FREQ_REQUIRED
-        Frequency value to keep.
-    cancel_column : bool, default=True
-        If True, drop the frequency column after filtering.
-
-    Returns
-    -------
-    pd.DataFrame
-        Filtered dataset.
-
-    Raises
-    ------
-    ValueError
-        If the frequency column is missing or if filtering results in zero rows.
-    """
+    
+    #Filter rows where the frequency column matches a given value.
+    
     if FREQ_COL not in df.columns:
         raise ValueError(f"Missing required column: {FREQ_COL}")
 
@@ -58,23 +37,8 @@ def clean_data(
     drop_cols=None,
     keep_flux: bool = True
 ) -> pd.DataFrame:
-    """
-    Remove unnecessary columns from the dataset.
 
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Input dataset.
-    drop_cols : list of str or None
-        Columns to be removed. If None, the default DROP_COLS is used.
-    keep_flux : bool, default=True
-        If False, remove the solar flux column as well.
-
-    Returns
-    -------
-    pd.DataFrame
-        Cleaned dataset.
-    """
+    #Remove unnecessary columns from the dataset.
     if drop_cols is None:
         drop_cols = DROP_COLS
 
@@ -86,7 +50,7 @@ def clean_data(
     return df
 
 
-# ------------------------- SPLITTING -------------------------
+# SPLITTING 
 
 
 def split_data(
@@ -96,36 +60,9 @@ def split_data(
     shuffle: str = "none",
     random_state: int = DEFAULT_RANDOM_STATE
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """
-    Split a dataset into train, validation, and test subsets.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Input dataset.
-    train_ratio : float
-        Ratio of samples assigned to the training set.
-    val_ratio : float
-        Ratio of samples assigned to the validation set.
-        The remaining samples go to the test set.
-    shuffle : {"none", "all", "train_only"}, default="none"
-        Shuffle strategy:
-        - "none": no shuffling
-        - "all": shuffle the entire dataset before splitting
-        - "train_only": shuffle only the training subset
-    random_state : int, default=DEFAULT_RANDOM_STATE
-        Seed for reproducibility.
-
-    Returns
-    -------
-    (train_df, val_df, test_df) : tuple of pd.DataFrame
-        The resulting split datasets.
-
-    Raises
-    ------
-    ValueError
-        If shuffle has an invalid value.
-    """
+  
+   # Split a dataset into train, validation, and test subsets.
+  
     if shuffle not in ["none", "all", "train_only"]:
         raise ValueError("shuffle must be 'none', 'all', or 'train_only'")
 
@@ -159,26 +96,9 @@ def save_split(
     random_state: int,
     label: str,
 ) -> None:
-    """
-    Perform splitting and save train/val/test CSV files.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Dataset to be split.
-    path_out : str
-        Output directory for the split files.
-    train_ratio : float
-        Fraction of samples for the training set.
-    val_ratio : float
-        Fraction of samples for the validation set.
-    shuffle : str
-        Shuffle mode passed to `split_data`.
-    random_state : int
-        Random seed.
-    label : str
-        Descriptive label for logging purposes.
-    """
+   
+    #Perform splitting and save train/val/test CSV files.
+    
     os.makedirs(path_out, exist_ok=True)
 
     train, val, test = split_data(df, train_ratio, val_ratio, shuffle, random_state)

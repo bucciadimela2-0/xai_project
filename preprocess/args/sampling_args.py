@@ -2,30 +2,26 @@ import argparse
 
 
 def parse_args():
-    """
-    Parse command-line arguments for random sampling of a dataset.
-
-    Returns
-    -------
-    argparse.Namespace
-        Parsed CLI arguments.
-    """
+    # Parse command-line arguments for random dataset sampling.
     parser = argparse.ArgumentParser(
         description="Create a random subset of a dataset for symbolic regression."
     )
 
+    # Input CSV path
     parser.add_argument(
         "--input",
         required=True,
         help="Path to the input CSV file.",
     )
 
+    # Output CSV path
     parser.add_argument(
         "--output",
         required=True,
-        help="Path where the sampled output CSV will be saved.",
+        help="Path where the sampled CSV will be saved.",
     )
 
+    # Number of samples to extract
     parser.add_argument(
         "--n_samples",
         type=int,
@@ -33,6 +29,7 @@ def parse_args():
         help="Number of samples to extract (default: 50,000).",
     )
 
+    # Random seed
     parser.add_argument(
         "--seed",
         type=int,

@@ -14,22 +14,9 @@ def random_sampling(
     random_state: int = 42,
     command: str = "",
 ) -> None:
-    """
-    Create a random subset of the dataset by sampling a fixed number of rows.
-
-    Parameters
-    ----------
-    input_path : str
-        Path to the input CSV file containing the full dataset.
-    output_path : str
-        Path where the sampled CSV file will be saved.
-    n_samples : int, default=50000
-        Number of rows to randomly select.
-    random_state : int, default=42
-        Seed used for reproducibility.
-    command : str, default=""
-        Full command string used to run the script (for logging purposes).
-    """
+   
+    #Create a random subset of the dataset by sampling a fixed number of rows.
+  
     logging.info(f"Loading dataset from: {input_path}")
     df = pd.read_csv(input_path)
     logging.info(f"Original dataset size: {len(df):,} rows")
